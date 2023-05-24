@@ -147,3 +147,213 @@
     //console.log(capitalize(team5))
 
     
+//dom handling
+
+window.onload = function () {
+    let cont = document.getElementById('cont');
+    cont.innerHTML= '<button id="clickableButton">Click on me</button>';
+    let clickableButton = document.getElementById('clickableButton');
+    let attendanceList = ["Rocío", "Mireia", "Maite","Miriam","Raissa","Amaia","Andreina","Lucía","María","Jimena"]
+    let number = [11,22,33,44,55,66,77,88,99];
+
+    clickableButton.addEventListener("click", function(){
+        alert("Welcome to my first steps on Javascript");
+        clickableButton.style.display='none'
+        let title = document.createElement('h2')
+        title.append("Attendance List")
+        cont.append(title)
+        takeAttendance()
+        countNumbers(number)
+    });
+
+    clickableButton.addEventListener("mouseover",function(){
+        clickableButton.innerHTML ="Nono WAIT- don't click on me"
+    });
+
+    clickableButton.addEventListener("mouseout",function(){
+        clickableButton.innerHTML ="Click on me"
+    });
+
+    function takeAttendance(){
+        for(let i=0;i<attendanceList.length;i++){
+            let student = document.createElement('p')
+            student.append(attendanceList[i])
+            cont.append(student)
+        }
+    }
+
+    function countNumbers(array){
+        let numberCount = 0;
+        for(let i=0;i<array.length;i++){
+            if(typeof array[i] == 'number'){
+                numberCount++
+            }
+        }
+        alert("Number Count: "+numberCount)
+    }
+    
+    //form
+    let form = document.createElement('form')
+
+    let firstInputLabel = document.createElement('label')
+    let firstInput = document.createElement('input')
+    let secondInputLabel = document.createElement('label')
+    let secondInput = document.createElement('input')
+    let submitButton = document.createElement('button')
+
+    firstInputLabel.textContent = 'User '
+    firstInput.type = 'text';
+    secondInputLabel.textContent = 'Password'
+    secondInput.type = 'password'
+    submitButton.type = 'submit'
+    submitButton.textContent='Submit'
+
+    cont.appendChild(form)
+    form.appendChild(firstInputLabel)
+    form.appendChild(firstInput)
+    form.appendChild(secondInputLabel)
+    form.appendChild(secondInput)
+    form.appendChild(submitButton)
+
+
+    //table
+    let table = document.createElement('table')
+    
+
+    let genshinCharacters = [
+        eula = {
+            id: 001,
+            name: 'Eula',
+            status: 'alive',
+            species: 'human',
+            type: 'cryo',
+            gender: 'female'
+        },
+        zhongli = {
+            id: 002,
+            name: 'Zhongli',
+            status: 'alive',
+            species: 'god',
+            type: 'geo',
+            gender: 'male'
+        },
+        xiangling = {
+            id: 003,
+            name: 'Xiangling',
+            status: 'alive',
+            species: 'human',
+            type: 'pyro',
+            gender: 'female'
+        },
+        kokomi = {
+            id: 4,
+            name: 'Kokomi',
+            status: 'alive',
+            species: 'human',
+            type: 'hydro',
+            gender: 'female'
+        },
+        beidou = {
+            id: 5,
+            name: 'Beidou',
+            status: 'alive',
+            species: 'human',
+            type: 'electro',
+            gender: 'female'
+        },
+        jean = {
+            id: 6,
+            name: 'Jean',
+            status: 'alive',
+            species: 'human',
+            type: 'anemo',
+            gender: 'female'
+        },
+        wanderer = {
+            id: 7,
+            name: 'Wanderer',
+            status: 'alive',
+            species: 'puppet',
+            type: 'anemo',
+            gender: 'male'
+        },
+        alhaitham = {
+            id: 8,
+            name: 'Alhaitham',
+            status: 'alive',
+            species: 'human',
+            type: 'dendro',
+            gender: 'male'
+        },
+        venti = {
+            id: 9,
+            name: 'Venti',
+            status: 'alive',
+            species: 'god',
+            type: 'anemo',
+            gender: 'male'
+        },
+        raiden = {
+            id: 10,
+            name: 'Shogun Raiden',
+            status: 'alive',
+            species: 'god',
+            type: 'electro',
+            gender: 'female'
+        },
+
+
+
+
+
+        ]
+
+
+    function createTable(){
+        let tableTitle = document.createElement('h2');
+        tableTitle.textContent='Genshin Character Table'
+        cont.appendChild(tableTitle)
+        cont.appendChild(table)
+        for(let y=-1;y<genshinCharacters.length;y++){
+            
+            let row = document.createElement('tr');
+            table.append(row);
+            table.style.border = '1px solid';
+            for(let x=0;x<6;x++){
+                if(y==-1){
+                    let tableHead = document.createElement('th');
+                    switch(x){
+                    case 0: tableHead.textContent='id'; break;
+                    case 1: tableHead.textContent='name';break;
+                    case 2: tableHead.textContent='status';break;
+                    case 3: tableHead.textContent='species';break;
+                    case 4: tableHead.textContent='type';break;
+                    case 5: tableHead.textContent='gender';break;
+                    }
+                    row.appendChild(tableHead);
+                }else{
+                    let column = document.createElement('td');
+                    row.appendChild(column)
+                    switch(x){
+                        case 0: column.textContent=genshinCharacters[y].id; break;
+                        case 1: column.textContent=genshinCharacters[y].name; break;
+                        case 2: column.textContent=genshinCharacters[y].status;break;
+                        case 3: column.textContent=genshinCharacters[y].species;break;
+                        case 4: column.textContent=genshinCharacters[y].type;break;
+                        case 5: column.textContent=genshinCharacters[y].gender;break;
+                    }
+                }
+
+            }
+        }
+        
+    }
+    createTable()
+
+
+
+    
+}
+   
+
+
